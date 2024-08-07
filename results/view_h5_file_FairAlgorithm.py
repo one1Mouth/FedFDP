@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 # file_path = 'mnist_FedPRF_001_1_1_0.h5'  # 替换为你的H5文件路径
 from utils.fairness import weighted_variance
 
-file_path = "mnist_FedAvg_test_0.h5"
+file_path = "fmnist_FedFDP_012-1-23_0.h5"
 
 with h5py.File(file_path, 'r') as hf:
     # 读取数据集

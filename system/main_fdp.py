@@ -77,12 +77,12 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     ## general
     # goal
-    parser.add_argument('-go', "--goal", type=str, default="test",
+    parser.add_argument('-go', "--goal", type=str, default="013-1-1",
                         help="The goal for this experiment")
     # dp_epsilon
-    parser.add_argument('-dpe', "--dp_epsilon", type=float, default=1.0)
+    parser.add_argument('-dpe', "--dp_epsilon", type=float, default=3.52)
     # lambda_prf; 5e1的时候，泊松采样0.05的方式会让loss到正无穷,此时auc的评估会出问题，所以auc相关的计算被我删掉了
-    parser.add_argument('-lp', "--lambda_prf", type=float, default=1e-4,
+    parser.add_argument('-lp', "--lambda_prf", type=float, default=1e-1,
                         help="The ratio of learning rates between the two optimization objectives for FedPRF")
     # global_rounds; dgrdbe=Ture的话, global_rounds会被重新根据epsilon计算
     parser.add_argument('-gr', "--global_rounds", type=int, default=1000)
@@ -90,11 +90,11 @@ if __name__ == "__main__":
     parser.add_argument('-bsr', "--batch_sample_ratio", type=float, default=0.05,
                         help="The ratio of Poisson sampling, 'q' in the paper FedPRF")
     # sigma
-    parser.add_argument('-dps', "--dp_sigma", type=float, default=2)
+    parser.add_argument('-dps', "--dp_sigma", type=float, default=0.1)
     # norm
     parser.add_argument('-dpn', "--dp_norm", type=float, default=0.1)
     # 数据集
-    parser.add_argument('-data', "--dataset", type=str, default="mnist")  # mnist, Cifar10, fmnist
+    parser.add_argument('-data', "--dataset", type=str, default="fmnist")  # mnist, Cifar10, fmnist
     # algorithm
     parser.add_argument('-algo', "--algorithm", type=str, default="FedAvg")
     # learning_rate
@@ -111,7 +111,7 @@ if __name__ == "__main__":
                         help="DP-FedSGD need li")
     # fairness
     fair_help = r"you can set {fairness = False} or {lambda_prf = 0} to shut down fair module."
-    parser.add_argument('-fair', "--fairness", type=bool, default=True,
+    parser.add_argument('-fair', "--fairness", type=bool, default=False,
                         help="fairness" + fair_help)
     # privacy:
     parser.add_argument('-dp', "--privacy", type=bool, default=True,
